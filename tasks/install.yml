@@ -1,0 +1,49 @@
+# Hack fix to force ansible to evaluate the variable, as it may not be in scope in easy-includes
+- local_action: command echo {{ easy_send_metadata_to_datacite_version }}
+  become: no
+  register: mod_version
+
+- include_role:
+    name: dans.easy-includes
+    tasks_from: install_easy_module
+  vars:
+    easy_module_name: "easy-send-metadata-to-datacite"
+    easy_module_version: "{{ mod_version.stdout }}"
+
+- include_role:
+    name: dans.easy-includes
+    tasks_from: install_cmd
+  vars:
+    easy_module_name: "easy-send-metadata-to-datacite"
+    easy_module_version: "{{ mod_version.stdout }}"
+
+- include_role:
+    name: dans.easy-includes
+    tasks_from: install_service
+  vars:
+    easy_module_name: "easy-send-metadata-to-datacite"
+    easy_module_version: "{{ mod_version.stdout }}"
+
+#
+# Put the module specific configuration here, if needed. This may include creating databases and other
+# resources.
+#
+# DELETE THIS COMMENT !!!
+#
+
+# Uncomment the below part and fill in configuration parameters that need to be different from the "reasonable defaults".
+# If none are needed, DELETE THIS PART !!!
+#
+#- name: Configure application
+#  replace: dest={{ easy_modules_installation_base_path }}/easy-send-metadata-to-datacite/cfg/application.properties
+#           regexp="^{{ item.key }}.*$"
+#           replace="{{ item.key }}={{ item.value }}"
+#  with_items:
+#    - { key: 'configuration-setting',  value: '{{ configuration_parameter_ansible_variable }}' }
+
+- include_role:
+    name: dans.easy-includes
+    tasks_from: start_service
+  vars:
+    easy_module_name: "easy-send-metadata-to-datacite"
+    easy_module_version: "{{ mod_version.stdout }}"

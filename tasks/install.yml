@@ -24,22 +24,20 @@
     easy_module_name: "easy-send-metadata-to-datacite"
     easy_module_version: "{{ mod_version.stdout }}"
 
-#
-# Put the module specific configuration here, if needed. This may include creating databases and other
-# resources.
-#
-# DELETE THIS COMMENT !!!
-#
-
-# Uncomment the below part and fill in configuration parameters that need to be different from the "reasonable defaults".
-# If none are needed, DELETE THIS PART !!!
-#
-#- name: Configure application
-#  replace: dest={{ easy_modules_installation_base_path }}/easy-send-metadata-to-datacite/cfg/application.properties
-#           regexp="^{{ item.key }}.*$"
-#           replace="{{ item.key }}={{ item.value }}"
-#  with_items:
-#    - { key: 'configuration-setting',  value: '{{ configuration_parameter_ansible_variable }}' }
+- name: Configure application
+  replace: dest={{ easy_modules_installation_base_path }}/easy-send-metadata-to-datacite/cfg/application.properties
+           regexp="^{{ item.key }}.*$"
+           replace="{{ item.key }}={{ item.value }}"
+  with_items:
+    - { key: 'datacite.registration.doi.uri', value: '{{ easy_send_metadata_to_datacite_registration_doi_uri }}' }
+    - { key: 'datacite.registration.metadata.uri', value: '{{ easy_send_metadata_to_datacite_registration_metadata_uri }}' }
+    - { key: 'datacite.username', value: '{{ easy_send_metadata_to_datacite_username }}' }
+    - { key: 'datacite.pasword', value: '{{ easy_send_metadata_to_datacite_password }}' }
+    - { key: 'datacite.resolver', value: '{{ easy_send_metadata_to_datacite_resolver }}' }
+    - { key: 'solr.query.base', value: '{{ easy_send_metadata_to_datacite_solr_query_base }}' }
+    - { key: 'fcrepo.url', value: '{{ easy_send_metadata_to_datacite_fcrepo_url }}' }
+    - { key: 'fcrepo.user', value: '{{ easy_send_metadata_to_datacite_fcrepo_user }}' }
+    - { key: 'fcrepo.password', value: '{{ easy_send_metadata_to_datacite_fcrepo_password }}' }
 
 - include_role:
     name: dans.easy-includes

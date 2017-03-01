@@ -1,2 +1,10 @@
 easy_send_metadata_to_datacite_version: "1.x-SNAPSHOT"
-# Add defaults for all variables that are used in install.yml
+easy_send_metadata_to_datacite_registration_doi_uri: "https://mds.test.datacite.org/doi"
+easy_send_metadata_to_datacite_registration_metadata_uri: "https://mds.test.datacite.org/metadata"
+easy_send_metadata_to_datacite_username: "fill_in_the_test_username_here"
+easy_send_metadata_to_datacite_password: "fill_in_the_test_password_here"
+easy_send_metadata_to_datacite_resolver: "http://deasy.dans.knaw.nl/ui/datasets/id/"
+easy_send_metadata_to_datacite_solr_query_base: "http://deasy.dans.knaw.nl:8080/solr/datasets/select"
+easy_send_metadata_to_datacite_fcrepo_url: "http://deasy.dans.knaw.nl:8080/fedora"
+easy_send_metadata_to_datacite_fcrepo_user: "fedoraAdmin"
+easy_send_metadata_to_datacite_fcrepo_password: "fedoraAdmin"

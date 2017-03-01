@@ -17,13 +17,6 @@
     easy_module_name: "easy-send-metadata-to-datacite"
     easy_module_version: "{{ mod_version.stdout }}"
 
-- include_role:
-    name: dans.easy-includes
-    tasks_from: install_service
-  vars:
-    easy_module_name: "easy-send-metadata-to-datacite"
-    easy_module_version: "{{ mod_version.stdout }}"
-
 - name: Configure application
   replace: dest={{ easy_modules_installation_base_path }}/easy-send-metadata-to-datacite/cfg/application.properties
            regexp="^{{ item.key }}.*$"
@@ -32,16 +25,9 @@
     - { key: 'datacite.registration.doi.uri', value: '{{ easy_send_metadata_to_datacite_registration_doi_uri }}' }
     - { key: 'datacite.registration.metadata.uri', value: '{{ easy_send_metadata_to_datacite_registration_metadata_uri }}' }
     - { key: 'datacite.username', value: '{{ easy_send_metadata_to_datacite_username }}' }
-    - { key: 'datacite.pasword', value: '{{ easy_send_metadata_to_datacite_password }}' }
+    - { key: 'datacite.password', value: '{{ easy_send_metadata_to_datacite_password }}' }
     - { key: 'datacite.resolver', value: '{{ easy_send_metadata_to_datacite_resolver }}' }
     - { key: 'solr.query.base', value: '{{ easy_send_metadata_to_datacite_solr_query_base }}' }
     - { key: 'fcrepo.url', value: '{{ easy_send_metadata_to_datacite_fcrepo_url }}' }
     - { key: 'fcrepo.user', value: '{{ easy_send_metadata_to_datacite_fcrepo_user }}' }
     - { key: 'fcrepo.password', value: '{{ easy_send_metadata_to_datacite_fcrepo_password }}' }
-
-- include_role:
-    name: dans.easy-includes
-    tasks_from: start_service
-  vars:
-    easy_module_name: "easy-send-metadata-to-datacite"
-    easy_module_version: "{{ mod_version.stdout }}"

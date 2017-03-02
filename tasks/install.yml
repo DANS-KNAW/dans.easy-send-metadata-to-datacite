@@ -22,6 +22,7 @@
            regexp="^{{ item.key }}.*$"
            replace="{{ item.key }}={{ item.value }}"
   with_items:
+    - { key: 'send.metadata.to.datacite.report.file', value: '{{ easy_send_metadata_to_datacite_report_file }}' }
     - { key: 'datacite.registration.doi.uri', value: '{{ easy_send_metadata_to_datacite_registration_doi_uri }}' }
     - { key: 'datacite.registration.metadata.uri', value: '{{ easy_send_metadata_to_datacite_registration_metadata_uri }}' }
     - { key: 'datacite.username', value: '{{ easy_send_metadata_to_datacite_username }}' }

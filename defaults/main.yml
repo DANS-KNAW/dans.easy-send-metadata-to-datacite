@@ -1,4 +1,5 @@
 easy_send_metadata_to_datacite_version: "1.x-SNAPSHOT"
+easy_send_metadata_to_datacite_report_file: "data/report.txt"
 easy_send_metadata_to_datacite_registration_doi_uri: "https://mds.test.datacite.org/doi"
 easy_send_metadata_to_datacite_registration_metadata_uri: "https://mds.test.datacite.org/metadata"
 easy_send_metadata_to_datacite_username: "fill_in_the_test_username_here"

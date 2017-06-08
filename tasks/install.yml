@@ -17,6 +17,9 @@
     easy_module_name: "easy-send-metadata-to-datacite"
     easy_module_version: "{{ mod_version.stdout }}"
 
+- name: Make /home writable for 'deposits' group for the status-report
+  file: path="/home/easy-send-metadata-to-datacite" state=directory owner={{ easy_module_name }} group="deposits" mode=0775
+
 - name: Configure application
   replace: dest={{ easy_modules_installation_base_path }}/easy-send-metadata-to-datacite/cfg/application.properties
            regexp="^{{ item.key }}.*$"
